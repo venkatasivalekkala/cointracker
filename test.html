@@ -1,0 +1,31 @@
+<DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/$
+    < html xmlns = "http://www.w3.org/1999/xhtml" >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Apache2 Ubuntu Default Page: It works</title>
+        <style type="text/css" media="screen">
+            * {
+                margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+        }
+    </style>
+    </head>
+    <body>
+        <div id='data'></div>
+        CoinsTracker
+        <script>
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myObj = JSON.parse(this.responseText);
+                    document.getElementById("data").innerHTML = myObj.name;
+                }
+            };
+            xmlhttp.open("GET", "http://ec2-18-220-97-156.us-east-2.compute.amazonaws.com/coinsStats.php", true);
+            xmlhttp.send();
+
+        </script>
+    </body>
+</html>
